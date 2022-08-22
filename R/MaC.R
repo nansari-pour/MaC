@@ -14,9 +14,31 @@
 
 MaC=function(samplename,allelecount.prefix,allelecount.suffix,allelesfile.prefix,allelesfile.suffix,output.suffix,remove.na=TRUE){
   ac=read.table(paste0(allelecount.prefix,samplename,allelecount.suffix),stringsAsFactors=F)
+  notation=ac$V1[1]
+  print(paste("Chr notation example :",notation))
+  if (nchar(notation)>3){
+    ac$V1=gsub("chr","",ac$V1)
+    ac$V1[ac$V1=="X"]=23
+    ac$V1=as.numeric(ac$V1)
+    ac=ac[order(ac$V1,ac$V2),]
+  } else {
+    ac$V1[ac$V1=="X"]=23
+    ac$V1=as.numeric(ac$V1)
+    ac=ac[order(ac$V1,ac$V2),]
+  }
   print(paste("No. of variants with counts =",nrow(ac)))
   al=read.table(paste0(allelesfile.prefix,samplename,allelesfile.suffix),header=T,stringsAsFactors=F)
   colnames(al)=c("chr","pos","ref","alt")
+  if (nchar(notation)>3){
+    al$chr=gsub("chr","",al$chr)
+    al$chr[al$chr=="X"]=23
+    al$chr=as.numeric(al$chr)
+    al=al[order(al$chr,al$pos),]
+  } else {
+    al$chr[al$chr=="X"]=23
+    al$chr=as.numeric(al$chr)
+    al=al[order(al$chr,al$pos),]
+  }
   if (nrow(al[which(al$ref=="-" | al$alt=="-"),])>0){
     stop("Indels (insertion/deletion variants) detected in the alleles file - MaC only works for single nucleotide substitutions (i.e. SNV/SNP)")
   }
@@ -40,6 +62,12 @@ MaC=function(samplename,allelecount.prefix,allelecount.suffix,allelesfile.prefix
   if (remove.na){
   mac=mac[which(!is.na(mac$vaf)),]
   print(paste("No. of variants retained after removing vaf==NA is",nrow(mac)))
+  }
+  # Revert chromosome X label (23 -> X)
+  mac$chr[mac$chr==23]="X"
+  # If Chr notation has 'chr', add it back
+  if (nchar(notation)>3){
+    mac$chr=paste0("chr",mac$chr)
   }
   write.table(mac,paste0(samplename,output.suffix),col.names=T,row.names=F,quote=F,sep="\t")
 }
