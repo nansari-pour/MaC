@@ -6,11 +6,11 @@ This method is dependent on
 1) An 'alleleCounter' output (this contains the number of reads supporting each nucleotide at a given position on a particular chromosome)
 2) An alleles file (four column file containing the chromosome, position and ref and alt nucleotides of each SNV/SNP per row; tab delimited)
 
-To run this analysis, simply execute the following:
+To run this analysis, simply set the working directory in run_MaC.R and supply the TUMOURNAME as below:
 
 module load R
 
-Rscript run_MaC.R "TUMOURNAME"
+Rscript run_MaC.R TUMOURNAME
 
 
 ## How to get alleleCounter output
