@@ -1,0 +1,6 @@
+chr	pos	ref	alt
+chr1	881686	C	A
+chr10	914527	G	T
+chr2	997860	C	A
+chr3	1076283	C	T
+chr5	1134410	G	C
