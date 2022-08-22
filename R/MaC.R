@@ -1,4 +1,4 @@
-#' Match allelecounts with Allelic labels (MaC)
+#' Match allele Counts (MaC)
 #' 
 #' Function to match the allelic labels with the nucleotide counts obtained by alleleCounter at a given single nucleotide locus
 #' This function will calculate the depth and variant/B-allele allele frequency (vaf/baf) for SNV/SNP
