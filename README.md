@@ -10,8 +10,10 @@ To run this analysis, simply set the working directory in run_MaC.R and supply t
 
 module load R
 
-Rscript run_MaC.R TUMOURNAME
+### Rscript run_MaC.R TUMOURNAME
 
+Example demo files are provided for the convenience of the users. With the example files, simply run 'Rscript run_MaC.R demo'.
+This should generate the provided demo_mac.txt file.
 
 ## How to get alleleCounter output
 
