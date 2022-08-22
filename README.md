@@ -38,3 +38,5 @@ This is important because if the chromosome notation (with or without 'chr') isn
 ### 2) Run alleleCounter on the loci file and the BAM file
 
 alleleCounter -l TUMOURNAME_loci.txt -b TUMOURNAME.bam -o TUMOURNAME_ac.txt
+
+NOTE: alleleCounter can be obtained from https://github.com/cancerit/alleleCount
