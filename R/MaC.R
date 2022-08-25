@@ -11,6 +11,7 @@
 #' @param allelesfile.suffix The character string that may have been assigned to the alleles file (cotaining ref and alt nucleotides of SNV/SNP) output file following the samplename (Default="_alleles.txt")
 #' @param output.suffix The character string to be added following the samplename to the output file name (Default="_mac.txt")
 #' @param remove.na Should the variants with an NA vaf be removed i.e. SNV/SNP with depth=0? (Default=TRUE, use FALSE if output is required at same length as alleleCounter output)
+#' @author Naser Ansari-Pour (WIMM, Oxford)
 
 MaC=function(samplename,allelecount.prefix,allelecount.suffix,allelesfile.prefix,allelesfile.suffix,output.suffix,remove.na=TRUE){
   ac=read.table(paste0(allelecount.prefix,samplename,allelecount.suffix),stringsAsFactors=F)
